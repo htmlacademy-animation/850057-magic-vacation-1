@@ -144,7 +144,7 @@
 
     .social-block__link {
       animation-name: fadeInUp;
-      animation-duration: .3s;
+      animation-duration: .2s;
       animation-timing-function: cubic-bezier(.17,.67,.83,.67);
       animation-fill-mode: forwards;
     }
@@ -178,6 +178,7 @@
   border-radius: 50%;
   opacity: 0;
   transform: translateY(0);
+  transition: color .2s ease;
 
   @media (min-width: $stop-scaling) {
     width: 40px;
@@ -231,7 +232,7 @@
   }
 
   &--insta {
-    animation-delay: .2s;
+    animation-delay: .1s;
     svg {
       width: 1.5rem;
       height: 1.5rem;
@@ -244,7 +245,7 @@
   }
 
   &--vk {
-    animation-delay: .4s;
+    animation-delay: .3s;
     svg {
       width: 1.7rem;
       height: 1rem;
@@ -254,16 +255,5 @@
         height: 10px;
       }
     }
-  }
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(5px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
   }
 }
