@@ -268,10 +268,9 @@
 
     &.active {
       &::after {
-        opacity: 1;
-        animation-name: scaleTest;
+        animation-name: width100perc;
         animation-timing-function: ease-in; 
-        animation-duration: .3s;
+        animation-duration: .4s;
         animation-delay: .5s;
         animation-fill-mode: forwards;
       }
@@ -284,10 +283,9 @@
 
       &::after {
         width: 100%;
-        animation-name: scaleTest;
+        animation-name: width100perc;
         animation-timing-function: ease-in; 
-        animation-duration: .2s;
-        opacity: 1;
+        animation-duration: .25s;
         background-color: $c-purple;
       }
     }
@@ -312,7 +310,7 @@
   }
 }
 
-@keyframes scaleTest {
+@keyframes width100perc {
   from {
     width: 0;
   }
