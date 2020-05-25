@@ -241,16 +241,17 @@
     display: block;
     color: inherit;
     padding: 0 0.5em 0.5em;
+    transition: color .15s ease-in;
 
     &::after {
       content: "";
       position: absolute;
       bottom: 0;
-      width: 100%;
+      width: 0;
       height: 2px;
       background-color: $c-light;
-      display: none;
       left: 0;
+      transition: width .2s ease-in;
 
       @media (max-width: $tablet) and (orientation: portrait) {
         left: 0;
@@ -267,7 +268,12 @@
 
     &.active {
       &::after {
-        display: block;
+        opacity: 1;
+        animation-name: scaleTest;
+        animation-timing-function: ease-in; 
+        animation-duration: .3s;
+        animation-delay: .5s;
+        animation-fill-mode: forwards;
       }
     }
 
@@ -277,6 +283,10 @@
       outline: none;
 
       &::after {
+        width: 100%;
+        animation-name: scaleTest;
+        animation-timing-function: ease-in; 
+        animation-duration: .2s;
         opacity: 1;
         background-color: $c-purple;
       }
@@ -298,6 +308,15 @@
 
   @media (max-width: $mobile) and (orientation: landscape) {
     margin-left: 0;
+    width: 100%;
+  }
+}
+
+@keyframes scaleTest {
+  from {
+    width: 0;
+  }
+  to {
     width: 100%;
   }
 }
