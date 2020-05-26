@@ -65,6 +65,36 @@
   }
 }
 
+.swiper-slide-active {
+    .slider__item-text {
+      opacity: var(--animOpacityStart);
+      --animOpacityStart: 0;
+      --animOpacityEnd: 1;
+      --animOffsetRightStart: 25px;
+      --animOffsetRightEnd: 0;
+      animation-name: fadeInRight;
+      animation-delay: .7s;
+      animation-duration: .2s;
+      animation-timing-function: cubic-bezier(.17,.67,.83,.67);
+      animation-fill-mode: forwards;
+  }
+}
+
+.swiper-slide-next {
+  .slider__item-text {
+      opacity: var(--animOpacityStart);
+      --animOpacityStart: 0;
+      --animOpacityEnd: 1;
+      --animOffsetRightStart: 25px;
+      --animOffsetRightEnd: 0;
+      animation-name: fadeInRight;
+      animation-delay: 1s;
+      animation-duration: .2s;
+      animation-timing-function: cubic-bezier(.17,.67,.83,.67);
+      animation-fill-mode: forwards;
+  }
+}
+
 .slider__item-title {
   margin: 0 0 0 -5.5rem;
   text-transform: uppercase;

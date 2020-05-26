@@ -143,6 +143,10 @@
     pointer-events: auto;
 
     .social-block__link {
+      --animOpacityStart: 0;
+      --animOpacityEnd: 1;
+      --animOffsetBottomStart: 5px;
+      --animOffsetBottomEnd: 0;
       animation-name: fadeInUp;
       animation-duration: .2s;
       animation-timing-function: cubic-bezier(.17,.67,.83,.67);
