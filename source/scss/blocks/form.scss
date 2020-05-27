@@ -54,6 +54,10 @@
   animation-delay: 1s;
   animation-fill-mode: forwards;
 
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+
   &:focus {
     padding: 0 5.6rem;
     border: 1px solid $c-purple;

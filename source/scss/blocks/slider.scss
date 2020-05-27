@@ -77,6 +77,10 @@
       animation-duration: .2s;
       animation-timing-function: cubic-bezier(.17,.67,.83,.67);
       animation-fill-mode: forwards;
+
+      @media (prefers-reduced-motion: reduce) {
+        animation: none;
+      }
   }
 }
 
@@ -92,6 +96,10 @@
       animation-duration: .2s;
       animation-timing-function: cubic-bezier(.17,.67,.83,.67);
       animation-fill-mode: forwards;
+
+      @media (prefers-reduced-motion: reduce) {
+        animation: none;
+      }
   }
 }
 

@@ -83,6 +83,10 @@
   animation-timing-function: cubic-bezier(.17,.67,.83,.67);
   animation-fill-mode: forwards;
 
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+
   @media (min-width: $stop-scaling) {
     width: 500px;
   }
@@ -113,6 +117,10 @@
   animation-delay: .5s;
   animation-timing-function: cubic-bezier(.17,.67,.83,.67);
   animation-fill-mode: forwards;
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
 
   @media (min-width: $stop-scaling) {
     width: 509px;
