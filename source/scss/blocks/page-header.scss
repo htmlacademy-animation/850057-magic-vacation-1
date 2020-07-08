@@ -241,41 +241,66 @@
     display: block;
     color: inherit;
     padding: 0 0.5em 0.5em;
-    transition: color .15s ease-in;
+    overflow: hidden;
+
+    @media (min-width: $tablet) {
+      transition: color 0.35s linear;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      animation: none;
+    }
 
     &::after {
       content: "";
       position: absolute;
       bottom: 0;
-      width: 0;
       height: 2px;
       background-color: $c-light;
-      left: 0;
-      transition: width .2s ease-in;
+      right: 0;
+    }
 
-      @media (max-width: $tablet) and (orientation: portrait) {
-        left: 0;
-        right: 0;
-        background-color: $c-dark;
+    &.blur {
+      &::after {
+        width: 100%;
+        transform: translateX(101%);
+        transform-origin: bottom right;
+        animation-name: removeUnderliningLinksPageHeader;
+        animation-duration: 0.35s;
+        animation-timing-function: ease-in;
       }
 
-      @media (max-width: $mobile) and (orientation: landscape) {
-        left: 0;
-        right: 0;
-        background-color: $c-dark;
+      @media (prefers-reduced-motion: reduce) {
+        animation: none;
       }
     }
 
     &.active {
       &::after {
-        animation-name: width100perc;
+        width: 100%;
+        left: 0;
+        transform: translateX(-101%);
+        transform-origin: left bottom;
+        animation-name: underlineLinksPageHeader;
+        animation-duration: 0.35s;
         animation-timing-function: ease-in; 
-        animation-duration: .4s;
-        animation-delay: .5s;
+        animation-delay: 0.5s;
         animation-fill-mode: forwards;
 
         @media (prefers-reduced-motion: reduce) {
           animation: none;
+        }
+
+        @media (max-width: $tablet) and (orientation: portrait) {
+          left: 0;
+          right: 0;
+          background-color: $c-dark;
+        }
+
+        @media (max-width: $mobile) and (orientation: landscape) {
+          left: 0;
+          right: 0;
+          background-color: $c-dark;
         }
       }
     }
@@ -287,9 +312,12 @@
 
       &::after {
         width: 100%;
-        animation-name: width100perc;
-        animation-timing-function: ease-in; 
-        animation-duration: .25s;
+        left: 0;
+        transform-origin: left bottom;
+        animation-name: underlineLinksPageHeader;
+        animation-duration: 0.35s;
+        animation-timing-function: ease-in;
+        animation-fill-mode: forwards;
         background-color: $c-purple;
 
         @media (prefers-reduced-motion: reduce) {

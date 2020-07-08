@@ -20,11 +20,29 @@
   }
 }
 
-@keyframes width100perc {
+@keyframes underlineLinksPageHeader {
   from {
-    width: 0;
+    transform: translateX(-100%);
   }
   to {
-    width: 100%;
+    transform: translateX(0);
+  }
+}
+
+@keyframes removeUnderliningLinksPageHeader {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes showFormFieldGame {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
   }
 }
