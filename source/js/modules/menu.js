@@ -22,5 +22,17 @@ export default () => {
         document.body.classList.remove(`menu-opened`);
       }
     });
+
+    menuLinks[i].addEventListener(`mouseover`, function (evt) {
+      if (window.innerWidth > 768) {
+        evt.target.classList.remove(`blur`);
+      }
+    });
+
+    menuLinks[i].addEventListener(`mouseout`, function (evt) {
+      if (window.innerWidth > 768) {
+        evt.target.classList.add(`blur`);
+      }
+    });
   }
 };

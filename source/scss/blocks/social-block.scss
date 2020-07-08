@@ -35,6 +35,7 @@
     background-color: $c-light;
     border: 2px solid $c-light;
     z-index: -1;
+    transition: width .2s ease-out, height .2s ease-out;
   }
 
   svg {
@@ -44,8 +45,7 @@
     height: 2.2rem;
   }
 
-  &:hover,
-  .social-block--active & {
+  &:hover {
     color: $c-purple;
 
     &::before {
@@ -130,6 +130,7 @@
   &:hover {
     opacity: 1;
     pointer-events: auto;
+
   }
 
   &:focus-within {
@@ -140,6 +141,21 @@
   .social-block--active & {
     opacity: 1;
     pointer-events: auto;
+
+    .social-block__link {
+      --animOpacityStart: 0;
+      --animOpacityEnd: 1;
+      --animOffsetBottomStart: 0.3125rem;
+      --animOffsetBottomEnd: 0;
+      animation-name: fadeInUp;
+      animation-duration: 0.35s;
+      animation-timing-function: cubic-bezier(.17,.67,.83,.67);
+      animation-fill-mode: forwards;
+
+      @media (prefers-reduced-motion: reduce) {
+        animation: none;
+      }
+    }
   }
 
   li {
@@ -168,6 +184,9 @@
   color: $c-light;
   border: 2px solid transparent;
   border-radius: 50%;
+  opacity: 0;
+  transform: translateY(0);
+  transition: color 0.35s ease;
 
   @media (min-width: $stop-scaling) {
     width: 40px;
@@ -195,6 +214,7 @@
     outline: none;
   }
 
+  
   &:active,
   &:active:focus {
     color: $c-purple;
@@ -207,6 +227,7 @@
   }
 
   &--fb {
+    animation-delay: 0s;
     svg {
       width: 0.8rem;
       height: 1.7rem;
@@ -219,6 +240,7 @@
   }
 
   &--insta {
+    animation-delay: 0.15s;
     svg {
       width: 1.5rem;
       height: 1.5rem;
@@ -231,6 +253,7 @@
   }
 
   &--vk {
+    animation-delay: 0.3s;
     svg {
       width: 1.7rem;
       height: 1rem;

@@ -1,0 +1,48 @@
+@keyframes fadeInUp {
+  from {
+    opacity: var(--animOpacityStart);
+    transform: translateY(var(--animOffsetBottomStart));
+  }
+  to {
+    opacity: var(--animOpacityEnd);
+    transform: translateY(var(--animOffsetBottomEnd));
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: var(--animOpacityStart);
+    transform: translateX(var(--animOffsetRightStart));
+  }
+  to {
+    opacity: var(--animOpacityEnd);
+    transform: translateX(var(--animOffsetRightEnd));
+  }
+}
+
+@keyframes underlineLinksPageHeader {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes removeUnderliningLinksPageHeader {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes showFormFieldGame {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
