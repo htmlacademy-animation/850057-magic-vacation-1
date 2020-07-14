@@ -35,6 +35,7 @@
   padding: 1rem 0;
   width: 10rem;
   color: $c-light;
+  opacity: 0;
 
   @media (min-width: $stop-scaling) {
     top: -5px;
@@ -177,6 +178,8 @@
   font-size: 1.2rem;
   line-height: 1.0418;
   color: $c-light;
+  opacity: 0;
+  transition: opacity 0.35s ease;
 
   @media (min-width: $stop-scaling) {
     font-size: 12px;
@@ -343,5 +346,31 @@
   @media (max-width: $mobile) and (orientation: landscape) {
     margin-left: 0;
     width: 100%;
+  }
+}
+
+.page-onload {
+  .page-header__logo {
+    opacity: var(--animOpacityStart);
+      --animOpacityStart: 0;
+      --animOpacityEnd: 1;
+      --animOffsetLeftStart: 0;
+      --animOffsetLeftEnd: 1rem;
+      animation-name: fadeInLeft;
+      animation-duration: 0.5s;
+      animation-timing-function: ease;
+      animation-fill-mode: forwards;
+
+      @media (prefers-reduced-motion: reduce) {
+        animation: none;
+      }
+  }
+
+  .page-header__menu {
+    opacity: 1;
+
+    @media (prefers-reduced-motion: reduce) {
+      animation: none;
+    }
   }
 }

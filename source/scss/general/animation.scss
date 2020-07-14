@@ -20,6 +20,17 @@
   }
 }
 
+@keyframes fadeInLeft {
+  from {
+    opacity: var(--animOpacityStart);
+    transform: translateX(var(--animOffsetLeftStart));
+  }
+  to {
+    opacity: var(--animOpacityEnd);
+    transform: translateX(var(--animOffsetLeftEnd));
+  }
+}
+
 @keyframes underlineLinksPageHeader {
   from {
     transform: translateX(-100%);
