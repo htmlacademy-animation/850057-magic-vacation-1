@@ -1,9 +1,9 @@
 export default () => {
-  const checkPageLoad = () => {
-    let wrapper = document.body;
-    wrapper.classList.add(`page-onload`);
+  const onPageLoad = () => {
+    const {body} = document;
+    body.classList.add(`page-onload`);
   };
 
-  window.addEventListener(`load`, checkPageLoad);
+  window.addEventListener(`load`, onPageLoad);
 };
 
