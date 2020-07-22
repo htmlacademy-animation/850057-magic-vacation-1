@@ -10,6 +10,9 @@ export default class FullPageScroll {
     this.activeScreen = 0;
     this.onScrollHandler = this.onScroll.bind(this);
     this.onUrlHashChengedHandler = this.onUrlHashChanged.bind(this);
+
+    this.bgAnimationScreenPositions = [{from: 1, to: 2}];
+    this.bgAnimationElement = document.querySelector(`.js-bg-screen`);
   }
 
   init() {
@@ -21,6 +24,7 @@ export default class FullPageScroll {
 
   onScroll(evt) {
     const currentPosition = this.activeScreen;
+    this.prevActiveScreen = this.activeScreen;
     this.reCalculateActiveScreenPosition(evt.deltaY);
     if (currentPosition !== this.activeScreen) {
       this.changePageDisplay();
@@ -29,14 +33,35 @@ export default class FullPageScroll {
 
   onUrlHashChanged() {
     const newIndex = Array.from(this.screenElements).findIndex((screen) => location.hash.slice(1) === screen.id);
+    this.prevActiveScreen = this.activeScreen;
     this.activeScreen = (newIndex < 0) ? 0 : newIndex;
     this.changePageDisplay();
   }
 
+  isBgAnimation() {
+    return this.bgAnimationScreenPositions.some((el) => el.from === this.prevActiveScreen && el.to === this.activeScreen);
+  }
+
   changePageDisplay() {
-    this.changeVisibilityDisplay();
-    this.changeActiveMenuItem();
-    this.emitChangeDisplayEvent();
+    const defaultActions = () => {
+      this.changeVisibilityDisplay();
+      this.changeActiveMenuItem();
+      this.emitChangeDisplayEvent();
+    };
+
+    if (this.isBgAnimation() && window.innerWidth > 768) {
+      this.bgAnimationElement.addEventListener(`animationend`, () => {
+        if (this.bgAnimationElement.classList.contains(`bg-screen--animated`)) {
+          defaultActions();
+          this.bgAnimationElement.classList.remove(`bg-screen--animated`);
+        }
+      });
+
+      this.bgAnimationElement.classList.add(`bg-screen--animated`);
+      return;
+    }
+
+    defaultActions();
   }
 
   changeVisibilityDisplay() {
