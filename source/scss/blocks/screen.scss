@@ -307,6 +307,12 @@
   background-color: $c-dark;
 }
 
+.screen--prizes {
+  &.active {
+    background-color: transparent;
+  }
+}
+
 .screen--game {
   position: relative;
   background-color: $c-dark;
