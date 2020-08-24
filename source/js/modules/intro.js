@@ -16,12 +16,16 @@ export default () => {
       `letters-row js-intro-title-row`,
       `letters-char js-intro-title-char`);
 
+  animatedTitle.init();
+
   const animatedDate = new AnimatedText(
       introDate,
       `intro__date--animated`,
       `letters-row js-intro-date-row`,
       `letters-char js-intro-date-char`,
       2500);
+
+  animatedDate.init();
 
   animatedContent();
 };

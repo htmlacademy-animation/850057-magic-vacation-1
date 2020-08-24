@@ -10,8 +10,6 @@ export default class AnimatedText {
     this._charTextClass = charTextClass;
     this._startAnimationClass = startAnimationClass;
     this._delayStart = delayStart || 600;
-
-    this.init();
   }
 
   init() {
