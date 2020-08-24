@@ -1,6 +1,6 @@
 export default class AnimatedText {
   constructor(node, ...options) {
-    const [startAnimationClass, rowTextClass, charTextClass, isReadyFn] = options;
+    const [startAnimationClass, rowTextClass, charTextClass, delayStart] = options;
 
     this.DELAY = 20;
     this.MS_IN_SEC = 1000;
@@ -9,7 +9,7 @@ export default class AnimatedText {
     this._rowTextClass = rowTextClass;
     this._charTextClass = charTextClass;
     this._startAnimationClass = startAnimationClass;
-    this._isReadyFn = isReadyFn || 600;
+    this._delayStart = delayStart || 600;
 
     this.init();
   }
@@ -88,12 +88,13 @@ export default class AnimatedText {
               const err = new Error(`Class .page-onload on the body is missing`);
               reject(err);
             }
-          }, this._isReadyFn);
+          }, this._delayStart);
         })
     .then(() => {
       this._addManageClassAnimation();
     })
     .catch((error) => {
+      // eslint-disable-next-line no-console
       console.error(error);
     });
   }
