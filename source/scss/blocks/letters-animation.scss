@@ -1,0 +1,73 @@
+.letters-char {
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+}
+
+.intro {
+  &__title {
+    opacity: 0;
+
+    &--animated {
+      opacity: 1;
+      .letters-char {
+        --animOpacityStart: 1;
+        --animOpacityEnd: 1;
+        --animOffsetBottomStart: 13rem;
+        --animOffsetBottomEnd: 0;
+        animation-name: fadeInUp;
+        animation-duration: 0.65s;
+        animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+        animation-fill-mode: forwards;
+      }
+    }
+  }
+
+  &__date {
+    opacity: 0;
+
+    &--animated {
+      opacity: 1;
+      .letters-char {
+        --animOpacityStart: 1;
+        --animOpacityEnd: 1;
+        --animOffsetBottomStart: 4rem;
+        --animOffsetBottomEnd: 0;
+        animation-name: fadeInUp;
+        animation-duration: 0.65s;
+        animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+        animation-fill-mode: forwards;
+      }
+    }
+  }
+
+  .letters-row {
+    display: inline-flex;
+    overflow: hidden;
+    padding: {
+      left: 0.4rem;
+      right: 0.4rem;
+      top: 0.2rem;
+    }
+
+    &:nth-child(1) {
+      padding-top: 2rem;
+    }
+  }
+
+  .letters-char {
+      will-change: transform;
+      transform: translateY(-12rem);
+
+    &:nth-child(3n) {
+      transform: translateY(-16rem);
+    }
+  }
+}
+
+.page-onload {
+  .intro__title,
+  .intro__date {
+    opacity: 1;
+  }
+}
