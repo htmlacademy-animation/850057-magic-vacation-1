@@ -22,6 +22,10 @@ export default class FullPageScroll {
     this.onUrlHashChanged();
   }
 
+  getActiveScreenId() {
+    return this.activeScreen;
+  }
+
   onScroll(evt) {
     const currentPosition = this.activeScreen;
     this.prevActiveScreen = this.activeScreen;
@@ -47,17 +51,18 @@ export default class FullPageScroll {
       this.changeVisibilityDisplay();
       this.changeActiveMenuItem();
       this.emitChangeDisplayEvent();
+      this.getActiveScreenId();
     };
 
     if (this.isBgAnimation() && window.innerWidth > 768) {
       this.bgAnimationElement.addEventListener(`animationend`, () => {
-        if (this.bgAnimationElement.classList.contains(`bg-screen--animated`)) {
+        if (this.bgAnimationElement.classList.contains(`launch-animate`)) {
           defaultActions();
-          this.bgAnimationElement.classList.remove(`bg-screen--animated`);
+          this.bgAnimationElement.classList.remove(`launch-animate`);
         }
       });
 
-      this.bgAnimationElement.classList.add(`bg-screen--animated`);
+      this.bgAnimationElement.classList.add(`launch-animate`);
       return;
     }
 

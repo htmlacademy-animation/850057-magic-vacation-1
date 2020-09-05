@@ -9,7 +9,7 @@
         background-color: $c-dark;
         transform: translateY(100%);
 
-        &.bg-screen--animated {
+        &.launch-animate {
             --animOpacityStart: 1;
             --animOpacityEnd: 1;
             --animOffsetBottomStart: 100vh;

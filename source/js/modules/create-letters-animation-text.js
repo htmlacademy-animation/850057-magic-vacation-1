@@ -1,6 +1,6 @@
-export default class AnimatedText {
+export default class AnimatedTextCreate {
   constructor(node, ...options) {
-    const [startAnimationClass, rowTextClass, charTextClass, delayStart] = options;
+    const [rowTextClass, charTextClass, delayStart] = options;
 
     this.DELAY = 20;
     this.MS_IN_SEC = 1000;
@@ -8,14 +8,18 @@ export default class AnimatedText {
     this._node = node;
     this._rowTextClass = rowTextClass;
     this._charTextClass = charTextClass;
-    this._startAnimationClass = startAnimationClass;
-    this._delayStart = delayStart || 600;
   }
 
   init() {
+    if (!this._isNotMobile()) {
+      return;
+    }
+
     this._insertElement();
-    this._startAnimation();
-    this._stopAnimation();
+  }
+
+  _isNotMobile() {
+    return window.innerWidth > 768;
   }
 
   _wrapElement(...args) {
@@ -66,42 +70,4 @@ export default class AnimatedText {
     return secRow ? ratio * this.DELAY + this.DELAY_RATIO : ratio * this.DELAY;
   }
 
-  _addManageClassAnimation() {
-    if (!this._node) {
-      throw new Error(`Element this._node is missing`);
-    }
-
-    this._node.classList.add(this._startAnimationClass);
-  }
-
-  _startAnimation() {
-    new Promise(
-        (resolve, reject) => {
-          setTimeout(() => {
-            const {body} = document;
-            const isReadyToAnimate = body.classList.contains(`page-onload`);
-            if (isReadyToAnimate) {
-              resolve();
-            } else {
-              const err = new Error(`Class .page-onload on the body is missing`);
-              reject(err);
-            }
-          }, this._delayStart);
-        })
-    .then(() => {
-      this._addManageClassAnimation();
-    })
-    .catch((error) => {
-      // eslint-disable-next-line no-console
-      console.error(error);
-    });
-  }
-
-  _stopAnimation() {
-    if (!this._node) {
-      throw new Error(`Element this._node is missing`);
-    }
-
-    this._node.classList.remove(this._startAnimationClass);
-  }
 }

@@ -4,11 +4,20 @@
   }
 }
 
+.letters-row {
+  display: inline-flex;
+  overflow: hidden;
+  padding: {
+    left: 0.4rem;
+    right: 0.4rem;
+    top: 0.2rem;
+  }
+}
 .intro {
   &__title {
     opacity: 0;
 
-    &--animated {
+    &.launch-animate {
       opacity: 1;
       .letters-char {
         --animOpacityStart: 1;
@@ -26,7 +35,7 @@
   &__date {
     opacity: 0;
 
-    &--animated {
+    &.launch-animate {
       opacity: 1;
       .letters-char {
         --animOpacityStart: 1;
@@ -42,14 +51,6 @@
   }
 
   .letters-row {
-    display: inline-flex;
-    overflow: hidden;
-    padding: {
-      left: 0.4rem;
-      right: 0.4rem;
-      top: 0.2rem;
-    }
-
     &:nth-child(1) {
       padding-top: 2rem;
     }
@@ -65,9 +66,36 @@
   }
 }
 
+.slider__item-title {
+  opacity: 0;
+  
+  .letters-char {
+      --animOpacityStart: 1;
+      --animOpacityEnd: 1;
+      --animOffsetBottomStart: 13rem;
+      --animOffsetBottomEnd: 0;
+      will-change: transform;
+      transform: translateY(-12rem);
+
+    &:nth-child(3n) {
+      transform: translateY(-16rem);
+    }
+  }
+  &.launch-animate {
+    opacity: 1;
+    .letters-char {
+      animation-name: fadeInUp;
+      animation-duration: 0.65s;
+      animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+      animation-fill-mode: forwards;
+    }
+  }
+}
+
 .page-onload {
   .intro__title,
-  .intro__date {
+  .intro__date,
+  .slider__item-title {
     opacity: 1;
   }
 }

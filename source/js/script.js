@@ -8,9 +8,13 @@ import result from './modules/result.js';
 import form from './modules/form.js';
 import social from './modules/social.js';
 import rules from './modules/rules.js';
-import intro from './modules/intro.js';
 import FullPageScroll from './modules/full-page-scroll';
 import pageOnLoad from './modules/page-onload';
+import intro from './modules/intro.js';
+import history from './modules/history.js';
+
+const fullPageScroll = new FullPageScroll();
+fullPageScroll.init();
 
 // init modules
 mobileHeight();
@@ -22,9 +26,6 @@ result();
 form();
 social();
 rules();
-intro();
 pageOnLoad();
-
-const fullPageScroll = new FullPageScroll();
-fullPageScroll.init();
-// fullPageScroll.publishEvent();
+intro(fullPageScroll);
+history(fullPageScroll);
