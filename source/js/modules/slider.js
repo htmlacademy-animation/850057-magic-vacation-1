@@ -26,6 +26,7 @@ export default () => {
             } else if (storySlider.activeIndex === 6 || storySlider.activeIndex === 7) {
               sliderContainer.style.backgroundImage = `url("img/slide4.jpg"), linear-gradient(180deg, rgba(45, 39, 63, 0) 0%, #2F2A42 16.85%)`;
             }
+            emitChangeSliderEvent(storySlider.activeIndex);
           },
           resize: () => {
             storySlider.update();
@@ -60,6 +61,7 @@ export default () => {
             } else if (storySlider.activeIndex === 6) {
               sliderContainer.style.backgroundImage = `url("img/slide4.jpg")`;
             }
+            emitChangeSliderEvent(storySlider.activeIndex);
           },
           resize: () => {
             storySlider.update();
@@ -69,6 +71,16 @@ export default () => {
         observeParents: true
       });
     }
+
+    const emitChangeSliderEvent = (sliderId) => {
+      const event = new CustomEvent(`sliderChanged`, {
+        detail: {
+          'sliderId': sliderId
+        }
+      });
+
+      document.body.dispatchEvent(event);
+    };
   };
 
   window.addEventListener(`resize`, function () {
