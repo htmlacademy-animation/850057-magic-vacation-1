@@ -1,6 +1,6 @@
 export default class AnimatedTextCreate {
   constructor(node, ...options) {
-    const [rowTextClass, charTextClass, delayStart] = options;
+    const [rowTextClass, charTextClass] = options;
 
     this.DELAY = 20;
     this.MS_IN_SEC = 1000;
